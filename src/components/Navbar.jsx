@@ -46,7 +46,7 @@ const Navbar = () => {
                         <NavLink to="/" className={navLinkStyle}>Home</NavLink>
                         <NavLink to="/allGroup" className={navLinkStyle}>Available Foods</NavLink>
                         <NavLink to="/myGroup" className={navLinkStyle}>Manage My Foods</NavLink>
-                        <NavLink to="/createGroup" className={navLinkStyle}>Add Food</NavLink>
+                        <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
                     </div>
 
                     {/* Theme toggle */}
@@ -99,7 +99,7 @@ const Navbar = () => {
                     <NavLink to="/" className={navLinkStyle}>Home</NavLink>
                     <NavLink to="/allGroup" className={navLinkStyle}>All Group</NavLink>
                     <NavLink to="/myGroup" className={navLinkStyle}>My Group</NavLink>
-                    <NavLink to="/createGroup" className={navLinkStyle}>Create Group</NavLink>
+                    <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
 
                     {/* Theme toggle for mobile */}
                     <label className="label cursor-pointer gap-2 px-4">

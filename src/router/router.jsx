@@ -6,6 +6,9 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import ForgetPassword from "../Pages/ForgetPassword";
 import ErrorPage from "../Pages/ErrorPage";
+import AddFood from "../Pages/AddFood";
+import PrivateRoute from "../Provider/PrivateRoute";
+
 
 const router = createBrowserRouter([
     {
@@ -15,6 +18,10 @@ const router = createBrowserRouter([
             {
                 path: '',
                 element: <Home></Home>,
+            },
+            {
+                path: 'addFood',
+                element: <PrivateRoute><AddFood></AddFood></PrivateRoute>,
             },
         ],
     },

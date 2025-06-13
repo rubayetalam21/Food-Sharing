@@ -21,7 +21,7 @@ const Footer = () => {
                 <NavLink to="/" className={navLinkStyle}>Home</NavLink>
                 <NavLink to="/allGroup" className={navLinkStyle}>Available Foods</NavLink>
                 <NavLink to="/myGroup" className={navLinkStyle}>Manage My Foods</NavLink>
-                <NavLink to="/createGroup" className={navLinkStyle}>Add Food</NavLink>
+                <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
             </div>
 
             <nav>
