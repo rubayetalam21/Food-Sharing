@@ -65,7 +65,7 @@ const AvailableFoods = () => {
                         <p><strong>Location:</strong> {food.location}</p>
                         <p><strong>Expires:</strong> {new Date(food.expiry).toLocaleString()}</p>
 
-                        <Link to={`/food/${food.id}`}>
+                        <Link to={`/foodDetails/${food._id}`}>
                             <button className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
                                 View Details
                             </button>
