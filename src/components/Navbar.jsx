@@ -44,7 +44,7 @@ const Navbar = () => {
                     {/* Nav links */}
                     <div className="flex gap-6">
                         <NavLink to="/" className={navLinkStyle}>Home</NavLink>
-                        <NavLink to="/allGroup" className={navLinkStyle}>Available Foods</NavLink>
+                        <NavLink to="/availableFoods" className={navLinkStyle}>Available Foods</NavLink>
                         <NavLink to="/myGroup" className={navLinkStyle}>Manage My Foods</NavLink>
                         <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
                     </div>
@@ -97,7 +97,7 @@ const Navbar = () => {
             {isOpen && (
                 <div className="md:hidden mt-3 space-y-2 flex flex-col">
                     <NavLink to="/" className={navLinkStyle}>Home</NavLink>
-                    <NavLink to="/allGroup" className={navLinkStyle}>All Group</NavLink>
+                    <NavLink to="/availableFoods" className={navLinkStyle}>All Group</NavLink>
                     <NavLink to="/myGroup" className={navLinkStyle}>My Group</NavLink>
                     <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
 

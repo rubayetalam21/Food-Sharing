@@ -8,6 +8,7 @@ import ForgetPassword from "../Pages/ForgetPassword";
 import ErrorPage from "../Pages/ErrorPage";
 import AddFood from "../Pages/AddFood";
 import PrivateRoute from "../Provider/PrivateRoute";
+import AvailableFoods from "../Pages/AvailableFoods";
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: '',
                 element: <Home></Home>,
+            },
+            {
+                path: 'availableFoods',
+                element: <AvailableFoods></AvailableFoods>,
             },
             {
                 path: 'addFood',

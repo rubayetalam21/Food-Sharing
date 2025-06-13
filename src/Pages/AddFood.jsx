@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 
 const AddFood = () => {
-    const { user } = useContext(AuthContext); // get logged-in user info
+    const { user } = useContext(AuthContext);
 
     const [formData, setFormData] = useState({
         foodName: "",
@@ -13,7 +13,7 @@ const AddFood = () => {
         location: "",
         expiry: "",
         notes: "",
-        status: "available", // default
+        status: "available",
     });
 
     const handleChange = (e) => {
@@ -32,7 +32,6 @@ const AddFood = () => {
         };
 
         console.log("Food Submitted:", foodData);
-        // TODO: Send `foodData` to backend or Firestore
 
 
         fetch('http://localhost:3000/foods', {
@@ -53,7 +52,7 @@ const AddFood = () => {
                         draggable: true
                     });
 
-                    // Optionally reset the form
+            
                     setFormData({
                         foodName: "",
                         foodImage: "",
