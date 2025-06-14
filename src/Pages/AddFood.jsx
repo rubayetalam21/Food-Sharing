@@ -47,7 +47,7 @@ const AddFood = () => {
                     console.log('added successfully.')
 
                     Swal.fire({
-                        title: "Hobby added successfully!",
+                        title: "Food added successfully!",
                         icon: "success",
                         draggable: true
                     });

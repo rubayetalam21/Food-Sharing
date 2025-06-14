@@ -1,13 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-
-// Mock logged-in user (replace with real auth)
-// const loggedInUser = {
-//     email: "user@example.com",
-//     name: "Logged In User",
-// };
 
 const FoodDetails = () => {
     const { id } = useParams();
@@ -15,7 +8,6 @@ const FoodDetails = () => {
     const [showModal, setShowModal] = useState(false);
     const [notes, setNotes] = useState("");
     const navigate = useNavigate();
-
 
     const { user } = useContext(AuthContext);
 
@@ -26,8 +18,13 @@ const FoodDetails = () => {
     }, [id]);
 
     const handleRequest = async () => {
+        if (!user?.email || !food?._id) {
+            alert("User not logged in or food not loaded");
+            return;
+        }
+
         const requestData = {
-            foodId: food.id,
+            foodId: food._id,
             foodName: food.foodName,
             foodImage: food.foodImage,
             donorName: food.donorName,
@@ -40,23 +37,35 @@ const FoodDetails = () => {
             status: "requested",
         };
 
-        // ✅ Step 1: Add to My Requested Foods
-        await fetch("http://localhost:3000/requests", {
+        // ✅ Step 1: Add to My Requests
+        const requestRes = await fetch("http://localhost:3000/requests", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData),
         });
 
-        // ✅ Step 2: Update original food status
-        await fetch(`http://localhost:3000/foods/user/${food.id}`, {
+        const requestResult = await requestRes.json();
+
+        if (!requestResult.success) {
+            alert("Failed to submit request.");
+            return;
+        }
+
+        // ✅ Step 2: Update food status
+        const updateRes = await fetch(`http://localhost:3000/foods/${food._id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ status: "requested" }),
         });
 
+        if (!updateRes.ok) {
+            alert("Failed to update food status.");
+            return;
+        }
+
         setShowModal(false);
         alert("Request submitted successfully!");
-        navigate("/my-requests"); // Optional: redirect user
+        navigate("/availableFoods");
     };
 
     if (!food) return <p className="text-center mt-10">Loading...</p>;
@@ -73,6 +82,7 @@ const FoodDetails = () => {
             <p><strong>Location:</strong> {food.location}</p>
             <p><strong>Expires:</strong> {new Date(food.expiry).toLocaleString()}</p>
             <p><strong>Notes:</strong> {food.notes}</p>
+
             <div className="mt-4">
                 <h3 className="text-lg font-semibold">Donor Info:</h3>
                 <p>{food.donorName}</p>
@@ -100,11 +110,11 @@ const FoodDetails = () => {
 
                         <div className="space-y-2 text-sm">
                             <p><strong>Food Name:</strong> {food.foodName}</p>
-                            <p><strong>Food ID:</strong> {food.id}</p>
+                            <p><strong>Food ID:</strong> {food._id}</p>
                             <img src={food.foodImage} alt="" className="w-40 h-32 object-cover rounded" />
                             <p><strong>Donator Name:</strong> {food.donorName}</p>
                             <p><strong>Donator Email:</strong> {food.donorEmail}</p>
-                            <p><strong>User Email:</strong> {user.email}</p>
+                            <p><strong>Your Email:</strong> {user.email}</p>
                             <p><strong>Request Date:</strong> {new Date().toLocaleString()}</p>
                             <p><strong>Pickup Location:</strong> {food.location}</p>
                             <p><strong>Expire Date:</strong> {new Date(food.expiry).toLocaleString()}</p>
