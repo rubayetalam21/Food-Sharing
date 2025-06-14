@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // 🔄 FIXED: use react-router-dom instead of react-router
+import { Link } from "react-router-dom"; 
 
 const AvailableFoods = () => {
     const [foods, setFoods] = useState([]);
     const [sortedFoods, setSortedFoods] = useState([]);
     const [sortOrder, setSortOrder] = useState("asc");
-    const [isThreeColumn, setIsThreeColumn] = useState(true); // 🆕 Toggle state for layout
+    const [isThreeColumn, setIsThreeColumn] = useState(true);
 
     useEffect(() => {
         fetch("http://localhost:3000/foods")

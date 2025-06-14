@@ -37,7 +37,6 @@ const FoodDetails = () => {
             status: "requested",
         };
 
-        // ✅ Step 1: Add to My Requests
         const requestRes = await fetch("http://localhost:3000/requests", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -51,7 +50,7 @@ const FoodDetails = () => {
             return;
         }
 
-        // ✅ Step 2: Update food status
+       
         const updateRes = await fetch(`http://localhost:3000/foods/${food._id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
