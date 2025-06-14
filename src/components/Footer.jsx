@@ -20,7 +20,7 @@ const Footer = () => {
             <div className='flex gap-10 text-bold'>
                 <NavLink to="/" className={navLinkStyle}>Home</NavLink>
                 <NavLink to="/availableFoods" className={navLinkStyle}>Available Foods</NavLink>
-                <NavLink to="/myGroup" className={navLinkStyle}>Manage My Foods</NavLink>
+                <NavLink to="/manageFoods" className={navLinkStyle}>Manage My Foods</NavLink>
                 <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
             </div>
 
