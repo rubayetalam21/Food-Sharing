@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom"; // 🔄 FIXED: use react-router-dom instead of react-router
 
 const AvailableFoods = () => {
     const [foods, setFoods] = useState([]);
     const [sortedFoods, setSortedFoods] = useState([]);
     const [sortOrder, setSortOrder] = useState("asc");
+    const [isThreeColumn, setIsThreeColumn] = useState(true); // 🆕 Toggle state for layout
 
     useEffect(() => {
-        // Fetching food data
-        fetch('http://localhost:3000/foods')
+        fetch("http://localhost:3000/foods")
             .then((res) => res.json())
             .then((data) => {
                 const availableFoods = data.filter((food) => food.status === "available");
@@ -27,32 +27,54 @@ const AvailableFoods = () => {
         setSortOrder(order);
     };
 
+    const toggleLayout = () => {
+        setIsThreeColumn((prev) => !prev);
+    };
+
     return (
         <div className="p-6 max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6">Available Foods</h2>
+            <div className="flex justify-between items-center flex-wrap gap-4 mb-6">
+                <h2 className="text-3xl font-bold">Available Foods</h2>
+                <div className="flex gap-4 items-center">
+                    {/* Sort Controls */}
+                    <p className="font-semibold">Sort by Expire Date:</p>
+                    <button
+                        className={`px-4 py-2 rounded ${sortOrder === "asc"
+                                ? "bg-blue-700 text-white"
+                                : "bg-blue-500 text-white hover:bg-blue-600"
+                            }`}
+                        onClick={() => handleSort("asc")}
+                    >
+                        Ascending
+                    </button>
+                    <button
+                        className={`px-4 py-2 rounded ${sortOrder === "desc"
+                                ? "bg-blue-700 text-white"
+                                : "bg-blue-500 text-white hover:bg-blue-600"
+                            }`}
+                        onClick={() => handleSort("desc")}
+                    >
+                        Descending
+                    </button>
 
-            {/* Sorting */}
-            <div className="mb-4 flex gap-4 items-center">
-                <p className="font-semibold">Sort by Expire Date:</p>
-                <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    onClick={() => handleSort("asc")}
-                >
-                    Ascending
-                </button>
-                <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    onClick={() => handleSort("desc")}
-                >
-                    Descending
-                </button>
+                    {/* Layout Toggle Button */}
+                    <button
+                        onClick={toggleLayout}
+                        className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800"
+                    >
+                        Layout: {isThreeColumn ? "3 Columns" : "2 Columns"}
+                    </button>
+                </div>
             </div>
 
             {/* Foods Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+                className={`grid gap-6 grid-cols-1 ${isThreeColumn ? "md:grid-cols-3" : "md:grid-cols-2"
+                    }`}
+            >
                 {(sortedFoods.length > 0 ? sortedFoods : foods).map((food) => (
                     <div
-                        key={food.id}
+                        key={food._id}
                         className="border p-4 rounded shadow hover:shadow-lg transition"
                     >
                         <img
