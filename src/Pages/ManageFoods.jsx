@@ -8,7 +8,7 @@ const ManageFoods = () => {
     const [editingFood, setEditingFood] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/foods?email=${user?.email}`)
+        fetch(`http://localhost:3000/foods/user?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setMyFoods(data));
     }, [user?.email]);
