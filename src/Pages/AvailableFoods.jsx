@@ -1,82 +1,31 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; 
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
+
+// Fetch function for available foods
+const fetchAvailableFoods = async () => {
+    const res = await fetch('http://localhost:3000/foods');
+    const data = await res.json();
+    return data.filter((food) => food.status === 'available');
+};
 
 const AvailableFoods = () => {
-    const [foods, setFoods] = useState([]);
-    const [sortedFoods, setSortedFoods] = useState([]);
-    const [sortOrder, setSortOrder] = useState("asc");
-    const [isThreeColumn, setIsThreeColumn] = useState(true);
+    // Use TanStack Query to fetch available foods
+    const { data: foods = [], isLoading, isError, error } = useQuery({
+        queryKey: ['availableFoods'],
+        queryFn: fetchAvailableFoods,
+    });
 
-    useEffect(() => {
-        fetch("http://localhost:3000/foods")
-            .then((res) => res.json())
-            .then((data) => {
-                const availableFoods = data.filter((food) => food.status === "available");
-                setFoods(availableFoods);
-                setSortedFoods(availableFoods);
-            });
-    }, []);
-
-    const handleSort = (order) => {
-        const sorted = [...foods].sort((a, b) => {
-            const dateA = new Date(a.expiry);
-            const dateB = new Date(b.expiry);
-            return order === "asc" ? dateA - dateB : dateB - dateA;
-        });
-        setSortedFoods(sorted);
-        setSortOrder(order);
-    };
-
-    const toggleLayout = () => {
-        setIsThreeColumn((prev) => !prev);
-    };
+    if (isLoading) return <p className="text-center mt-10">Loading...</p>;
+    if (isError) return <p className="text-center text-red-500">Error: {error.message}</p>;
 
     return (
         <div className="p-6 max-w-7xl mx-auto">
-            <div className="flex justify-between items-center flex-wrap gap-4 mb-6">
-                <h2 className="text-3xl font-bold">Available Foods</h2>
-                <div className="flex gap-4 items-center">
-                    {/* Sort Controls */}
-                    <p className="font-semibold">Sort by Expire Date:</p>
-                    <button
-                        className={`px-4 py-2 rounded ${sortOrder === "asc"
-                                ? "bg-blue-700 text-white"
-                                : "bg-blue-500 text-white hover:bg-blue-600"
-                            }`}
-                        onClick={() => handleSort("asc")}
-                    >
-                        Ascending
-                    </button>
-                    <button
-                        className={`px-4 py-2 rounded ${sortOrder === "desc"
-                                ? "bg-blue-700 text-white"
-                                : "bg-blue-500 text-white hover:bg-blue-600"
-                            }`}
-                        onClick={() => handleSort("desc")}
-                    >
-                        Descending
-                    </button>
+            <h2 className="text-3xl font-bold mb-6">Available Foods</h2>
 
-                    {/* Layout Toggle Button */}
-                    <button
-                        onClick={toggleLayout}
-                        className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800"
-                    >
-                        Layout: {isThreeColumn ? "3 Columns" : "2 Columns"}
-                    </button>
-                </div>
-            </div>
-
-            {/* Foods Section */}
-            <div
-                className={`grid gap-6 grid-cols-1 ${isThreeColumn ? "md:grid-cols-3" : "md:grid-cols-2"
-                    }`}
-            >
-                {(sortedFoods.length > 0 ? sortedFoods : foods).map((food) => (
-                    <div
-                        key={food._id}
-                        className="border p-4 rounded shadow hover:shadow-lg transition"
-                    >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {foods.map((food) => (
+                    <div key={food._id} className="border p-4 rounded shadow hover:shadow-lg transition">
                         <img
                             src={food.foodImage}
                             alt={food.foodName}
