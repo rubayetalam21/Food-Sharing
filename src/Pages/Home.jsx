@@ -3,6 +3,8 @@ import Slider from '../components/Slider';
 import AvailableFoods from './AvailableFoods';
 import { Fade, Slide } from 'react-awesome-reveal';
 import FeaturedFoods from './FeaturedFoods';
+import HowItWorks from './HowItWorks';
+import WhyChooseUs from './WhyChooseUs';
 
 const Home = () => {
     return (
@@ -16,6 +18,8 @@ const Home = () => {
             <Slide direction="up" triggerOnce>
                 <FeaturedFoods></FeaturedFoods>
             </Slide>
+            <HowItWorks></HowItWorks>
+            <WhyChooseUs></WhyChooseUs>
            
         </div>
     );
