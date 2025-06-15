@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from '../components/Slider';
 import AvailableFoods from './AvailableFoods';
 import { Fade, Slide } from 'react-awesome-reveal';
+import FeaturedFoods from './FeaturedFoods';
 
 const Home = () => {
     return (
@@ -13,7 +14,7 @@ const Home = () => {
             </div>
 
             <Slide direction="up" triggerOnce>
-                <AvailableFoods></AvailableFoods>
+                <FeaturedFoods></FeaturedFoods>
             </Slide>
            
         </div>
