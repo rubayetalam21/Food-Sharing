@@ -53,7 +53,7 @@ const Navbar = () => {
                     {/* Theme toggle */}
                     <div className="form-control">
                         <label className="label cursor-pointer gap-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-200">
+                            <span className="text-sm text-gray-600 dark:text-gray-600">
                                 {theme === 'dark' ? 'Dark' : 'Light'} Mode
                             </span>
                             <input

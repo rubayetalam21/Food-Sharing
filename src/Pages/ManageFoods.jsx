@@ -77,7 +77,7 @@ const ManageFoods = () => {
 
         if ((await res.json()).modifiedCount > 0) {
             Swal.fire("Success", "Food updated successfully", "success");
-            // Refresh the list
+            
             const updatedList = myFoods.map(food =>
                 food._id === editingFood._id ? { ...food, ...updatedFood } : food
             );
