@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // ✅ Correct import
+import { Link } from 'react-router-dom';
 
 const FeaturedFoods = () => {
     const [foods, setFoods] = useState([]);
@@ -96,7 +96,7 @@ const FeaturedFoods = () => {
                 ))}
             </div>
 
-            {/* Show All Button */}
+           
             <div className="mt-8 text-center">
                 <Link to="/availableFoods">
                     <button className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition">

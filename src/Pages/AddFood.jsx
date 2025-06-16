@@ -39,7 +39,7 @@ const AddFood = () => {
                     icon: "success",
                 });
 
-                // Reset form
+                
                 setFormData({
                     foodName: "",
                     foodImage: "",

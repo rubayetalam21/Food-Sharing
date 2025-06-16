@@ -4,12 +4,12 @@ import { useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const ForgetPassword = () => {
-    const { resetPassword } = useContext(AuthContext); // You must define this in AuthProvider
+    const { resetPassword } = useContext(AuthContext); 
     const location = useLocation();
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
 
-    // If email was passed from login page, set it
+   
     useEffect(() => {
         if (location.state?.forgetEmail) {
             setEmail(location.state.forgetEmail);
