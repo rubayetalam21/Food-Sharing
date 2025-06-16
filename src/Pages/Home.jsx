@@ -5,6 +5,7 @@ import { Fade, Slide } from 'react-awesome-reveal';
 import FeaturedFoods from './FeaturedFoods';
 import HowItWorks from './HowItWorks';
 import WhyChooseUs from './WhyChooseUs';
+import { motion } from 'framer-motion';
 
 const Home = () => {
     return (
@@ -16,10 +17,28 @@ const Home = () => {
             </div>
 
             <Slide direction="up" triggerOnce>
-                <FeaturedFoods></FeaturedFoods>
+                <FeaturedFoods />
             </Slide>
-            <HowItWorks></HowItWorks>
-            <WhyChooseUs></WhyChooseUs>
+
+            {/* ✅ Framer Motion Animation */}
+            <motion.div
+                initial={{ opacity: 0, x: -150 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 2.5 }}
+                // viewport={{ once: true }}
+            >
+                <HowItWorks />
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, x: 150 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 2.5 }}
+                // viewport={{ once: true }}
+            >
+                 <WhyChooseUs />
+            </motion.div>
+
            
         </div>
     );
