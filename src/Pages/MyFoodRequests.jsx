@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import moment from "moment";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const MyFoodRequests = () => {
     const { user } = useContext(AuthContext);
@@ -32,6 +33,9 @@ const MyFoodRequests = () => {
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-10">
+            <Helmet>
+                <title>Home | Food Request</title>
+            </Helmet>
             <h1 className="text-3xl font-bold mb-6 text-center">My Food Requests</h1>
             {requests.length === 0 ? (
                 <p className="text-center">No food requests yet.</p>

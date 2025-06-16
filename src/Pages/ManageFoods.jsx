@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import { getAuth } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 
 const ManageFoods = () => {
     const { user } = useContext(AuthContext);
@@ -22,7 +23,7 @@ const ManageFoods = () => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`, 
+                        Authorization: `Bearer ${token}`,
                     },
                 });
 
@@ -77,7 +78,7 @@ const ManageFoods = () => {
 
         if ((await res.json()).modifiedCount > 0) {
             Swal.fire("Success", "Food updated successfully", "success");
-            
+
             const updatedList = myFoods.map(food =>
                 food._id === editingFood._id ? { ...food, ...updatedFood } : food
             );
@@ -88,6 +89,9 @@ const ManageFoods = () => {
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-8">
+            <Helmet>
+                <title>Home | Manage Foods </title>
+            </Helmet>
             <h1 className="text-3xl font-bold mb-6 text-center">Manage My Foods</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full border">
