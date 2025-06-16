@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { getAuth } from "firebase/auth";
 
 const ManageFoods = () => {
     const { user } = useContext(AuthContext);
@@ -8,9 +9,29 @@ const ManageFoods = () => {
     const [editingFood, setEditingFood] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/foods/user?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setMyFoods(data));
+        const fetchMyFoods = async () => {
+            if (!user) return;
+
+            const auth = getAuth();
+            const currentUser = auth.currentUser;
+
+            if (currentUser) {
+                const token = await currentUser.getIdToken();
+
+                const res = await fetch(`http://localhost:3000/foods/user?email=${user.email}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`, 
+                    },
+                });
+
+                const data = await res.json();
+                setMyFoods(data);
+            }
+        };
+
+        fetchMyFoods();
     }, [user?.email]);
 
     const handleDelete = async (id) => {

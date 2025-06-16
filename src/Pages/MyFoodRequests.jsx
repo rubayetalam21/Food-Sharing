@@ -7,11 +7,27 @@ const MyFoodRequests = () => {
     const [requests, setRequests] = useState([]);
 
     useEffect(() => {
-        if (user?.email) {
-            fetch(`http://localhost:3000/requests?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => setRequests(data));
-        }
+        const fetchRequests = async () => {
+            if (user?.email) {
+                try {
+                    const token = await user.getIdToken();
+                    const res = await fetch(`http://localhost:3000/requests?email=${user.email}`, {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
+
+                    const data = await res.json();
+                    setRequests(data);
+                } catch (error) {
+                    console.error("Failed to fetch requests:", error);
+                }
+            }
+        };
+
+        fetchRequests();
     }, [user?.email]);
 
     return (
