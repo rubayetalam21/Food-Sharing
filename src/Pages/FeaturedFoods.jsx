@@ -7,7 +7,7 @@ const FeaturedFoods = () => {
     const [isThreeColumn, setIsThreeColumn] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:3000/foods")
+        fetch("https://b11a11-server-side-rubayetalam21.vercel.app/foods")
             .then((res) => res.json())
             .then((data) => {
                 const availableFoods = data

@@ -12,7 +12,7 @@ const FoodDetails = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/foods/user/${id}`)
+        fetch(`https://b11a11-server-side-rubayetalam21.vercel.app/foods/user/${id}`)
             .then((res) => res.json())
             .then((data) => setFood(data));
     }, [id]);
@@ -37,7 +37,7 @@ const FoodDetails = () => {
             status: "requested",
         };
 
-        const requestRes = await fetch("http://localhost:3000/requests", {
+        const requestRes = await fetch("https://b11a11-server-side-rubayetalam21.vercel.app/requests", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData),
@@ -51,7 +51,7 @@ const FoodDetails = () => {
         }
 
        
-        const updateRes = await fetch(`http://localhost:3000/foods/${food._id}`, {
+        const updateRes = await fetch(`https://b11a11-server-side-rubayetalam21.vercel.app/foods/${food._id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ status: "requested" }),

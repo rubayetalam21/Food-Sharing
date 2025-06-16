@@ -18,7 +18,7 @@ const AddFood = () => {
 
     // Mutation function to POST data
     const addFood = async (newFood) => {
-        const res = await fetch('http://localhost:3000/foods', {
+        const res = await fetch('https://b11a11-server-side-rubayetalam21.vercel.app/foods', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

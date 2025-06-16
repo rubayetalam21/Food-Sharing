@@ -18,7 +18,7 @@ const ManageFoods = () => {
             if (currentUser) {
                 const token = await currentUser.getIdToken();
 
-                const res = await fetch(`http://localhost:3000/foods/user?email=${user.email}`, {
+                const res = await fetch(`https://b11a11-server-side-rubayetalam21.vercel.app/foods/user?email=${user.email}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const ManageFoods = () => {
         });
 
         if (result.isConfirmed) {
-            const res = await fetch(`http://localhost:3000/foods/${id}`, {
+            const res = await fetch(`https://b11a11-server-side-rubayetalam21.vercel.app/foods/${id}`, {
                 method: "DELETE"
             });
 
@@ -69,7 +69,7 @@ const ManageFoods = () => {
             notes: form.notes.value
         };
 
-        const res = await fetch(`http://localhost:3000/foods/${editingFood._id}`, {
+        const res = await fetch(`https://b11a11-server-side-rubayetalam21.vercel.app/foods/${editingFood._id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedFood)

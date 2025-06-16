@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 
-// Fetch available foods
+
 const fetchAvailableFoods = async () => {
-    const res = await fetch('http://localhost:3000/foods');
+    const res = await fetch('https://b11a11-server-side-rubayetalam21.vercel.app/foods');
     const data = await res.json();
     return data.filter((food) => food.status === 'available');
 };

@@ -11,7 +11,7 @@ const MyFoodRequests = () => {
             if (user?.email) {
                 try {
                     const token = await user.getIdToken();
-                    const res = await fetch(`http://localhost:3000/requests?email=${user.email}`, {
+                    const res = await fetch(`https://b11a11-server-side-rubayetalam21.vercel.app/requests?email=${user.email}`, {
                         method: "GET",
                         headers: {
                             "Content-Type": "application/json",
