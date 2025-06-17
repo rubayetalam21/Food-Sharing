@@ -88,7 +88,7 @@ const ManageFoods = () => {
     };
 
     return (
-        <div className="max-w-5xl mx-auto px-4 py-8">
+        <div className="w-11/12 mx-auto px-4 py-8">
             <Helmet>
                 <title>Home | Manage Foods </title>
             </Helmet>

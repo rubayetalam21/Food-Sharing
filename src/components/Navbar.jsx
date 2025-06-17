@@ -35,7 +35,7 @@ const Navbar = () => {
         isActive ? 'text-teal-500 font-semibold underline' : 'text-gray-700 dark:text-gray-200 hover:underline';
 
     return (
-        <nav className="bg-base-100 shadow px-4 py-3">
+        <nav className="bg-base-100 shadow px-4 py-3 mt-4">
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <h2 className="font-bold text-2xl text-teal-500">Food Sharing</h2>
 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { FiSearch } from 'react-icons/fi';
+
 
 
 const fetchAvailableFoods = async () => {
@@ -25,19 +27,23 @@ const AvailableFoods = () => {
     if (isError) return <p className="text-center text-red-500">Error: {error.message}</p>;
 
     return (
-        <div className="p-6 max-w-7xl mx-auto">
+        <div className="w-11/12 mx-auto py-6">
             <h2 className="text-3xl font-bold mb-6">Available Foods</h2>
 
             {/* Search bar */}
-            <div className="mb-6">
+            <div className="mb-6 relative w-full md:w-1/2">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                    <FiSearch />
+                </span>
                 <input
                     type="text"
-                    placeholder="Search food by name..."
+                    placeholder="Search Food by Name..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full md:w-1/2 px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-10 px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
             </div>
+
 
             {/* Food grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

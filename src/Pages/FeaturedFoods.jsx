@@ -36,7 +36,7 @@ const FeaturedFoods = () => {
     return (
         <div className="p-6 max-w-7xl mx-auto">
             <div className="flex justify-between items-center flex-wrap gap-4 mb-6">
-                <h2 className="text-3xl font-bold">🌟 Featured Foods</h2>
+                <h2 className="text-3xl font-bold">Featured Foods</h2>
                 <div className="flex gap-4 items-center">
                     <p className="font-semibold">Sort by Expire Date:</p>
                     <button
