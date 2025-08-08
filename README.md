@@ -13,7 +13,7 @@ Users can browse donated food items, make requests, and manage their contributio
 
 ## 🖼️ Screenshot
 
-![Sharing Foods Screenshot](./https://i.ibb.co.com/hJRYFMyk/Screenshot-2025-08-08-154436.png)  
+![Sharing Foods Screenshot](https://i.ibb.co.com/hJRYFMyk/Screenshot-2025-08-08-154436.png)  
 <!-- Replace with your screenshot named 'screenshot.png' in the repo root -->
 
 ---
