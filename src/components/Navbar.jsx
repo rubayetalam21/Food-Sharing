@@ -7,6 +7,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 const Navbar = () => {
     const { user, logOut } = React.useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
     // Apply theme
@@ -32,28 +33,60 @@ const Navbar = () => {
     };
 
     const navLinkStyle = ({ isActive }) =>
-        isActive ? 'text-teal-500 font-semibold underline' : 'text-gray-700 dark:text-gray-200 hover:underline';
+        isActive
+            ? 'text-white font-semibold underline'
+            : 'text-gray-100 hover:underline';
 
     return (
-        <nav className="bg-base-100 shadow px-4 py-3 mt-4">
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <h2 className="font-bold text-2xl text-teal-500">Food Sharing</h2>
+        <nav className="fixed top-0 left-0 w-full z-50 bg-teal-500 shadow">
+            <div className="max-w-7xl mx-auto px-13 py-3 flex items-center justify-between">
+                <h2 className="font-bold text-2xl text-white">Food Sharing</h2>
 
-                {/* Desktop nav - hidden on small screens */}
+                {/* Desktop Nav */}
                 <div className="hidden md:flex items-center gap-6">
-                    {/* Nav links */}
-                    <div className="flex gap-6">
-                        <NavLink to="/" className={navLinkStyle}>Home</NavLink>
-                        <NavLink to="/availableFoods" className={navLinkStyle}>Available Foods</NavLink>
-                        <NavLink to="/manageFoods" className={navLinkStyle}>Manage My Foods</NavLink>
-                        <NavLink to="/requestFoods" className={navLinkStyle}>My Food Requests</NavLink>
-                        <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
-                    </div>
+                    {/* Public Routes */}
+                    <NavLink to="/" className={navLinkStyle}>Home</NavLink>
+                    <NavLink to="/availableFoods" className={navLinkStyle}>Available Foods</NavLink>
+                    <NavLink to="/contact" className={navLinkStyle}>Contact</NavLink>
+
+                    {/* Dropdown for protected routes */}
+                    {user && (
+                        <div className="relative">
+                            <button
+                                onClick={() => setDropdownOpen(!dropdownOpen)}
+                                className="text-white hover:underline"
+                            >
+                                My Dashboard ▾
+                            </button>
+                            {dropdownOpen && (
+                                <div className="absolute top-8 left-0 bg-white text-gray-800 shadow-lg rounded w-48">
+                                    <NavLink
+                                        to="/manageFoods"
+                                        className="block px-4 py-2 hover:bg-teal-100"
+                                    >
+                                        Manage My Foods
+                                    </NavLink>
+                                    <NavLink
+                                        to="/requestFoods"
+                                        className="block px-4 py-2 hover:bg-teal-100"
+                                    >
+                                        My Food Requests
+                                    </NavLink>
+                                    <NavLink
+                                        to="/addFood"
+                                        className="block px-4 py-2 hover:bg-teal-100"
+                                    >
+                                        Add Food
+                                    </NavLink>
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     {/* Theme toggle */}
                     <div className="form-control">
                         <label className="label cursor-pointer gap-2">
-                            <span className="text-sm text-gray-600 dark:text-gray-600">
+                            <span className="text-sm text-white">
                                 {theme === 'dark' ? 'Dark' : 'Light'} Mode
                             </span>
                             <input
@@ -81,30 +114,38 @@ const Navbar = () => {
                         </div>
 
                         {user ? (
-                            <button onClick={handleLogOut} className="btn bg-teal-500 text-white px-6">LogOut</button>
+                            <button onClick={handleLogOut} className="btn bg-white text-teal-500 px-6">LogOut</button>
                         ) : (
-                            <Link to="/auth/login" className="btn bg-teal-500 text-black px-6">Login</Link>
+                            <Link to="/auth/login" className="btn bg-white text-teal-500 px-6">Login</Link>
                         )}
                     </div>
                 </div>
 
-                {/* Mobile menu toggle button - hidden on medium and up */}
-                <button className="md:hidden text-2xl" onClick={() => setIsOpen(!isOpen)}>
+                {/* Mobile Menu Button */}
+                <button className="md:hidden text-white text-2xl" onClick={() => setIsOpen(!isOpen)}>
                     ☰
                 </button>
             </div>
 
-            {/* Mobile dropdown menu - only visible on small screens */}
+            {/* Mobile Dropdown */}
             {isOpen && (
-                <div className="md:hidden mt-3 space-y-2 flex flex-col">
+                <div className="md:hidden bg-teal-600 px-4 py-3 space-y-2 flex flex-col text-white">
+                    {/* Public Routes */}
                     <NavLink to="/" className={navLinkStyle}>Home</NavLink>
                     <NavLink to="/availableFoods" className={navLinkStyle}>Available Foods</NavLink>
-                    <NavLink to="/manageFoods" className={navLinkStyle}>Manage My Foods</NavLink>
-                    <NavLink to="/requestFoods" className={navLinkStyle}>My Food Requests</NavLink>
-                    <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
+                    <NavLink to="/contact" className={navLinkStyle}>Contact</NavLink>
 
-                    {/* Theme toggle for mobile */}
-                    <label className="label cursor-pointer gap-2 px-4">
+                    {/* Protected Routes in Mobile */}
+                    {user && (
+                        <>
+                            <NavLink to="/manageFoods" className={navLinkStyle}>Manage My Foods</NavLink>
+                            <NavLink to="/requestFoods" className={navLinkStyle}>My Food Requests</NavLink>
+                            <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
+                        </>
+                    )}
+
+                    {/* Theme toggle */}
+                    <label className="label cursor-pointer gap-2">
                         <span className="text-sm">{theme === 'dark' ? 'Dark' : 'Light'} Mode</span>
                         <input
                             type="checkbox"
@@ -114,8 +155,8 @@ const Navbar = () => {
                         />
                     </label>
 
-                    {/* Mobile Auth Section */}
-                    <div className="flex items-center gap-3 mt-4 px-4">
+                    {/* Auth */}
+                    <div className="flex items-center gap-3 mt-4">
                         <img className="w-10 h-10 rounded-full border" src={user?.photoURL || userImage} alt="User" />
                         <span>{user?.displayName || "Guest"}</span>
                     </div>
@@ -127,9 +168,7 @@ const Navbar = () => {
                 </div>
             )}
         </nav>
-
     );
 };
-
 
 export default Navbar;

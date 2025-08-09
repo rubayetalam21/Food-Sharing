@@ -17,13 +17,15 @@ const Footer = () => {
             <div className='flex flew-row'>
                 <a className="text-2xl font-bold text-teal-500">Food Sharing</a>
             </div>
-            <div className='flex gap-10 text-bold'>
+
+            <div className="flex flex-col md:flex-row gap-4 md:gap-10 text-center md:text-left">
                 <NavLink to="/" className={navLinkStyle}>Home</NavLink>
                 <NavLink to="/availableFoods" className={navLinkStyle}>Available Foods</NavLink>
                 <NavLink to="/manageFoods" className={navLinkStyle}>Manage My Foods</NavLink>
                 <NavLink to="/requestFoods" className={navLinkStyle}>My Food Requests</NavLink>
                 <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
             </div>
+
 
             <nav>
                 <div className="grid grid-flow-col gap-4">

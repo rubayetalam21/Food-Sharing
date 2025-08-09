@@ -34,37 +34,42 @@ const FeaturedFoods = () => {
     };
 
     return (
-        <div className="p-6 max-w-7xl mx-auto">
+        <div className="py-6">
             <div className="flex justify-between items-center flex-wrap gap-4 mb-6">
-                <h2 className="text-3xl font-bold">Featured Foods</h2>
-                <div className="flex gap-4 items-center">
-                    <p className="font-semibold">Sort by Expire Date:</p>
-                    <button
-                        className={`px-4 py-2 rounded ${sortOrder === "asc"
-                            ? "bg-blue-700 text-white"
-                            : "bg-blue-500 text-white hover:bg-blue-600"
-                            }`}
-                        onClick={() => handleSort("asc")}
-                    >
-                        Ascending
-                    </button>
-                    <button
-                        className={`px-4 py-2 rounded ${sortOrder === "desc"
-                            ? "bg-blue-700 text-white"
-                            : "bg-blue-500 text-white hover:bg-blue-600"
-                            }`}
-                        onClick={() => handleSort("desc")}
-                    >
-                        Descending
-                    </button>
+                <h2 className="text-3xl font-bold text-center">Featured Foods</h2>
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 items-start sm:items-center justify-start sm:justify-between w-full mb-6">
+                    <p className="font-semibold whitespace-nowrap">Sort by Expire Date:</p>
 
-                    <button
-                        onClick={toggleLayout}
-                        className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800"
-                    >
-                        Layout: {isThreeColumn ? "3 Columns" : "2 Columns"}
-                    </button>
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                        <button
+                            className={`px-4 py-2 rounded ${sortOrder === "asc"
+                                ? "bg-blue-700 text-white"
+                                : "bg-blue-500 text-white hover:bg-blue-600"
+                                }`}
+                            onClick={() => handleSort("asc")}
+                        >
+                            Ascending
+                        </button>
+
+                        <button
+                            className={`px-4 py-2 rounded ${sortOrder === "desc"
+                                ? "bg-blue-700 text-white"
+                                : "bg-blue-500 text-white hover:bg-blue-600"
+                                }`}
+                            onClick={() => handleSort("desc")}
+                        >
+                            Descending
+                        </button>
+
+                        <button
+                            onClick={toggleLayout}
+                            className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800"
+                        >
+                            Layout: {isThreeColumn ? "3 Columns" : "2 Columns"}
+                        </button>
+                    </div>
                 </div>
+
             </div>
 
             {/* Foods Section */}
@@ -96,7 +101,7 @@ const FeaturedFoods = () => {
                 ))}
             </div>
 
-           
+
             <div className="mt-8 text-center">
                 <Link to="/availableFoods">
                     <button className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
