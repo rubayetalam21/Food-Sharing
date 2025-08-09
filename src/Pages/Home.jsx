@@ -6,6 +6,7 @@ import FeaturedFoods from './FeaturedFoods';
 import HowItWorks from './HowItWorks';
 import WhyChooseUs from './WhyChooseUs';
 import { motion } from 'framer-motion';
+import ReviewSection from './ReviewSection';
 
 const Home = () => {
     return (
@@ -38,6 +39,7 @@ const Home = () => {
             >
                  <WhyChooseUs />
             </motion.div>
+            <ReviewSection></ReviewSection>
 
            
         </div>
