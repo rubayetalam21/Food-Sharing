@@ -36,7 +36,7 @@ const FeaturedFoods = () => {
     return (
         <div className="py-6">
             <div className="flex justify-between items-center flex-wrap gap-4 mb-6">
-                <h2 className="text-3xl font-bold text-center">Featured Foods</h2>
+                <h2 className="text-3xl font-bold text-teal-500 mb-8 text-center">Featured Foods</h2>
                 <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 items-start sm:items-center justify-start sm:justify-between w-full mb-6">
                     <p className="font-semibold whitespace-nowrap">Sort by Expire Date:</p>
 

@@ -1,53 +1,67 @@
 import React from 'react';
-import { FaYoutube } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
-import { NavLink } from 'react-router';
+import { FaYoutube, FaLinkedin, FaFacebook } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
-
     const navLinkStyle = ({ isActive }) =>
         isActive
-            ? 'text-teal-500 font-semibold underline'
-            : 'text-gray-700 hover:underline';
+            ? 'text-white font-semibold underline'
+            : 'text-teal-200 hover:underline';
 
     return (
-        <footer className=" w-11/12 mx-auto flex items-center justify-center flex-col gap-5 bg-base-200 text-base-content py-4 rounded p-2 my-5">
+        <footer className="bg-teal-500 text-teal-100 py-6 rounded-t-lg mt-12 shadow-inner">
+            <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
 
-            <div className='flex flew-row'>
-                <a className="text-2xl font-bold text-teal-500">Food Sharing</a>
-            </div>
+                {/* Brand */}
+                <div className="text-2xl font-bold text-white">
+                    Food Sharing
+                </div>
 
-            <div className="flex flex-col md:flex-row gap-4 md:gap-10 text-center md:text-left">
-                <NavLink to="/" className={navLinkStyle}>Home</NavLink>
-                <NavLink to="/availableFoods" className={navLinkStyle}>Available Foods</NavLink>
-                <NavLink to="/manageFoods" className={navLinkStyle}>Manage My Foods</NavLink>
-                <NavLink to="/requestFoods" className={navLinkStyle}>My Food Requests</NavLink>
-                <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
-            </div>
+                {/* Navigation Links */}
+                <nav className="flex flex-wrap gap-6 justify-center md:justify-start">
+                    <NavLink to="/" className={navLinkStyle}>Home</NavLink>
+                    <NavLink to="/availableFoods" className={navLinkStyle}>Available Foods</NavLink>
+                    <NavLink to="/manageFoods" className={navLinkStyle}>Manage My Foods</NavLink>
+                    <NavLink to="/requestFoods" className={navLinkStyle}>My Food Requests</NavLink>
+                    <NavLink to="/addFood" className={navLinkStyle}>Add Food</NavLink>
+                </nav>
 
-
-            <nav>
-                <div className="grid grid-flow-col gap-4">
-                    <a className='flex justify-center items-center rounded-full w-10 h-10 border' href="https://www.facebook.com/rubayetalam21/"
+                {/* Social Icons */}
+                <div className="flex gap-4">
+                    <a
+                        href="https://www.facebook.com/rubayetalam21/"
                         target="_blank"
-                        rel="noopener noreferrer">
-                        <FaFacebook />
+                        rel="noopener noreferrer"
+                        className="flex justify-center items-center rounded-full w-10 h-10 border border-teal-200 text-teal-200 hover:bg-white hover:text-teal-600 transition"
+                        aria-label="Facebook"
+                    >
+                        <FaFacebook size={20} />
                     </a>
-                    <a className='flex justify-center items-center rounded-full w-10 h-10 border' href="https://www.youtube.com/@shahmuhammadrubayetalam4747"
+                    <a
+                        href="https://www.youtube.com/@shahmuhammadrubayetalam4747"
                         target="_blank"
-                        rel="noopener noreferrer">
-                        <FaYoutube />
-
+                        rel="noopener noreferrer"
+                        className="flex justify-center items-center rounded-full w-10 h-10 border border-teal-200 text-teal-200 hover:bg-white hover:text-teal-600 transition"
+                        aria-label="YouTube"
+                    >
+                        <FaYoutube size={20} />
                     </a>
-                    <a className='flex justify-center items-center rounded-full w-10 h-10 border' href="https://www.linkedin.com/in/smrubayetalam/"
+                    <a
+                        href="https://www.linkedin.com/in/smrubayetalam/"
                         target="_blank"
-                        rel="noopener noreferrer">
-                        <FaLinkedin />
+                        rel="noopener noreferrer"
+                        className="flex justify-center items-center rounded-full w-10 h-10 border border-teal-200 text-teal-200 hover:bg-white hover:text-teal-600 transition"
+                        aria-label="LinkedIn"
+                    >
+                        <FaLinkedin size={20} />
                     </a>
                 </div>
-            </nav>
+            </div>
 
+            {/* Copyright */}
+            <div className="mt-6 text-center text-teal-200 text-sm select-none">
+                &copy; {new Date().getFullYear()} Food Sharing. All rights reserved.
+            </div>
         </footer>
     );
 };
