@@ -12,6 +12,7 @@ import AvailableFoods from "../Pages/AvailableFoods";
 import FoodDetails from "../Pages/FoodDetails";
 import ManageFoods from "../Pages/ManageFoods";
 import MyFoodRequests from "../Pages/MyFoodRequests";
+import Contact from "../Pages/Contact";
 
 
 const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path: "requestFoods",
                 element: <PrivateRoute><MyFoodRequests></MyFoodRequests></PrivateRoute>
+            },
+            {
+                path: "contact",
+                element: <Contact></Contact>
             }
 
         ],
