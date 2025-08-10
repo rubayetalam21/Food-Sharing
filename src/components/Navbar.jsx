@@ -62,24 +62,28 @@ const Navbar = () => {
                                 <div className="absolute top-8 left-0 bg-white text-gray-800 shadow-lg rounded w-48">
                                     <NavLink
                                         to="/manageFoods"
+                                        onClick={() => setDropdownOpen(false)}
                                         className="block px-4 py-2 hover:bg-teal-100"
                                     >
                                         Manage My Foods
                                     </NavLink>
                                     <NavLink
                                         to="/requestFoods"
+                                        onClick={() => setDropdownOpen(false)}
                                         className="block px-4 py-2 hover:bg-teal-100"
                                     >
                                         My Food Requests
                                     </NavLink>
                                     <NavLink
                                         to="/addFood"
+                                        onClick={() => setDropdownOpen(false)}
                                         className="block px-4 py-2 hover:bg-teal-100"
                                     >
                                         Add Food
                                     </NavLink>
                                 </div>
                             )}
+
                         </div>
                     )}
 

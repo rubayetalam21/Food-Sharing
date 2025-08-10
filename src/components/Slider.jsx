@@ -22,7 +22,7 @@ const slides = [
         subtitle: "Distribution of food to the poor people",
     },
     {
-        img: "https://i.ibb.co/nSTBLvN/download.jpg",
+        img: "https://i.ibb.co.com/vxwqBSpc/4.jpg",
         title: "Food Distribution",
         subtitle: "Distribution of food to the poor people",
     },

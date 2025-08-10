@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -23,7 +24,13 @@ const Contact = () => {
         // Reset form
         setFormData({ name: "", email: "", message: "" });
 
-        alert("Thank you for contacting us! We'll get back to you soon.");
+        // SweetAlert success message
+        Swal.fire({
+            title: "Message Sent!",
+            text: "Thank you for contacting us! We'll get back to you soon.",
+            icon: "success",
+            confirmButtonColor: "#40E0D0", // matches your brand color
+        });
     };
 
     return (

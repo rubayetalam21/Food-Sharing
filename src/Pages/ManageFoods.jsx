@@ -88,14 +88,14 @@ const ManageFoods = () => {
     };
 
     return (
-        <div className="w-11/12 mx-auto px-4 py-8">
+        <div className="w-11/12 mx-auto px-4 py-8 my-12">
             <Helmet>
                 <title>Home | Manage Foods </title>
             </Helmet>
             <h1 className="text-3xl font-bold mb-6 text-center">Manage My Foods</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full border">
-                    <thead className="bg-gray-100">
+                    <thead className="bg-gray-100 text-black">
                         <tr>
                             <th>#</th>
                             <th>Image</th>

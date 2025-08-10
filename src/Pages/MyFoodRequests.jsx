@@ -32,7 +32,7 @@ const MyFoodRequests = () => {
     }, [user?.email]);
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-10">
+        <div className="max-w-6xl mx-auto my-12 px-4 py-10">
             <Helmet>
                 <title>Home | Food Request</title>
             </Helmet>
@@ -42,7 +42,7 @@ const MyFoodRequests = () => {
             ) : (
                 <div className="overflow-x-auto">
                     <table className="table table-zebra w-full border">
-                        <thead className="bg-gray-100">
+                        <thead className="bg-gray-100 text-black">
                             <tr>
                                 <th>#</th>
                                 <th>Food</th>

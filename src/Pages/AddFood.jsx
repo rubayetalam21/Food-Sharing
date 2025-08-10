@@ -79,7 +79,7 @@ const AddFood = () => {
     };
 
     return (
-        <div className="max-w-xl mx-auto p-6 my-6 bg-white rounded shadow-md text-black">
+        <div className="max-w-xl mx-auto p-6 my-12 bg-white rounded shadow-md text-black">
             <h2 className="text-2xl font-bold mb-4 text-center">Add Food</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <input
