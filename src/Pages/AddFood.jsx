@@ -80,7 +80,7 @@ const AddFood = () => {
 
     return (
         <div className="max-w-xl mx-auto p-6 my-12 bg-white rounded shadow-md text-black">
-            <h2 className="text-2xl font-bold mb-4 text-center">Add Food</h2>
+            <h2 className="text-3xl font-bold text-teal-500 mb-4 text-center">Add Food</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                     type="text"

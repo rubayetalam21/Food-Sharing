@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const FoodDetails = () => {
     const { id } = useParams();
@@ -50,7 +51,7 @@ const FoodDetails = () => {
             return;
         }
 
-       
+
         const updateRes = await fetch(`https://b11a11-server-side-rubayetalam21.vercel.app/foods/${food._id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -63,7 +64,14 @@ const FoodDetails = () => {
         }
 
         setShowModal(false);
-        alert("Request submitted successfully!");
+        Swal.fire({
+            title: "Success!",
+            text: "Request submitted successfully!",
+            icon: "success",
+            timer: 2000,
+            showConfirmButton: false
+        });
+
         navigate("/availableFoods");
     };
 
@@ -91,7 +99,7 @@ const FoodDetails = () => {
                 )}
             </div>
 
-           
+
             {food.status !== "requested" && (
                 <button
                     onClick={() => setShowModal(true)}

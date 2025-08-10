@@ -36,7 +36,7 @@ const MyFoodRequests = () => {
             <Helmet>
                 <title>Home | Food Request</title>
             </Helmet>
-            <h1 className="text-3xl font-bold mb-6 text-center">My Food Requests</h1>
+            <h1 className="text-3xl font-bold text-teal-500 mb-4 text-center">My Food Requests</h1>
             {requests.length === 0 ? (
                 <p className="text-center">No food requests yet.</p>
             ) : (

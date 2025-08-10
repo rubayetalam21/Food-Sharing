@@ -19,12 +19,12 @@ const slides = [
     {
         img: "https://i.ibb.co/qYfT45NS/3.jpg",
         title: "Food Distribution",
-        subtitle: "Distribution of food to the poor people",
+        subtitle: "Distribution of food to the children",
     },
     {
         img: "https://i.ibb.co.com/vxwqBSpc/4.jpg",
         title: "Food Distribution",
-        subtitle: "Distribution of food to the poor people",
+        subtitle: "Distribution of food to the flood affected people",
     },
 ];
 

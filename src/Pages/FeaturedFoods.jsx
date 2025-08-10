@@ -5,7 +5,7 @@ import Button from './Button';
 const FeaturedFoods = () => {
     const [foods, setFoods] = useState([]);
     const [sortOrder, setSortOrder] = useState("asc");
-    const [isThreeColumn, setIsThreeColumn] = useState(true);
+    const [isFourColumn, setIsFourColumn] = useState(true);
 
     useEffect(() => {
         fetch("https://b11a11-server-side-rubayetalam21.vercel.app/foods")
@@ -31,7 +31,7 @@ const FeaturedFoods = () => {
     };
 
     const toggleLayout = () => {
-        setIsThreeColumn((prev) => !prev);
+        setIsFourColumn((prev) => !prev);
     };
 
     return (
@@ -66,7 +66,7 @@ const FeaturedFoods = () => {
                             onClick={toggleLayout}
                             className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800"
                         >
-                            Layout: {isThreeColumn ? "3 Columns" : "2 Columns"}
+                            Layout: {isFourColumn ? "4 Columns" : "3 Columns"}
                         </Button>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ const FeaturedFoods = () => {
 
             {/* Foods Section */}
             <div
-                className={`grid gap-6 grid-cols-1 ${isThreeColumn ? "md:grid-cols-3" : "md:grid-cols-2"
+                className={`grid gap-6 grid-cols-1 ${isFourColumn ? "md:grid-cols-4" : "md:grid-cols-3"
                     }`}
             >
                 {foods.map((food) => (
