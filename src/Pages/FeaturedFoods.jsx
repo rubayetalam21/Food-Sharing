@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Button from './Button';
 
 const FeaturedFoods = () => {
     const [foods, setFoods] = useState([]);
@@ -41,7 +42,7 @@ const FeaturedFoods = () => {
                     <p className="font-semibold whitespace-nowrap">Sort by Expire Date:</p>
 
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                        <button
+                        <Button variant="filled"
                             className={`px-4 py-2 rounded ${sortOrder === "asc"
                                 ? "bg-blue-700 text-white"
                                 : "bg-blue-500 text-white hover:bg-blue-600"
@@ -49,9 +50,9 @@ const FeaturedFoods = () => {
                             onClick={() => handleSort("asc")}
                         >
                             Ascending
-                        </button>
+                        </Button>
 
-                        <button
+                        <Button variant="filled"
                             className={`px-4 py-2 rounded ${sortOrder === "desc"
                                 ? "bg-blue-700 text-white"
                                 : "bg-blue-500 text-white hover:bg-blue-600"
@@ -59,14 +60,14 @@ const FeaturedFoods = () => {
                             onClick={() => handleSort("desc")}
                         >
                             Descending
-                        </button>
+                        </Button>
 
-                        <button
+                        <Button variant="filled"
                             onClick={toggleLayout}
                             className="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800"
                         >
                             Layout: {isThreeColumn ? "3 Columns" : "2 Columns"}
-                        </button>
+                        </Button>
                     </div>
                 </div>
 
@@ -93,9 +94,9 @@ const FeaturedFoods = () => {
                         <p><strong>Expires:</strong> {new Date(food.expiry).toLocaleString()}</p>
 
                         <Link to={`/foodDetails/${food._id}`}>
-                            <button className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+                            <Button variant="filled" className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
                                 View Details
-                            </button>
+                            </Button>
                         </Link>
                     </div>
                 ))}
@@ -104,9 +105,9 @@ const FeaturedFoods = () => {
 
             <div className="mt-8 text-center">
                 <Link to="/availableFoods">
-                    <button className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                    <Button variant="filled" className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
                         Show All Available Foods
-                    </button>
+                    </Button>
                 </Link>
             </div>
         </div>

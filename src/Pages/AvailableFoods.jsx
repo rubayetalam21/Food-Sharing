@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
+import Button from './Button';
 
 
 
@@ -64,9 +65,9 @@ const AvailableFoods = () => {
                             <p><strong>Expires:</strong> {new Date(food.expiry).toLocaleString()}</p>
 
                             <Link to={`/foodDetails/${food._id}`}>
-                                <button className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+                                <Button variant="filled" className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
                                     View Details
-                                </button>
+                                </Button>
                             </Link>
                         </div>
                     ))
